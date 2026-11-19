@@ -1,0 +1,12 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+data/bima.db*
+data/uploads/
+web/node_modules/
+web/.next/
+*.json.key
+service-account*.json
+.DS_Store
+*.tsbuildinfo

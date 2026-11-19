@@ -1,0 +1,7 @@
+.venv
+web
+.env
+data/bima.db*
+data/uploads
+__pycache__
+.git

@@ -1,0 +1,81 @@
+{
+  "_note": "All names, numbers and hospitals are invented for the hackathon demo.",
+  "policies": [
+    {"id": "POL-HF-20194417", "name": "Suraksha Family Floater (Group)", "insurer": "Demo General Insurance", "sum_insured": 500000, "room_rent_cap": 5000, "copay_pct": 10, "senior_copay_pct": 10, "start_date": "2022-03-01"},
+    {"id": "POL-IN-30028820", "name": "Arogya Plus Individual Floater", "insurer": "Demo General Insurance", "sum_insured": 300000, "room_rent_cap": 3000, "copay_pct": 0, "senior_copay_pct": 20, "start_date": "2020-07-15"},
+    {"id": "POL-HF-40013021", "name": "Suraksha Family Floater (Retail)", "insurer": "Demo General Insurance", "sum_insured": 1000000, "room_rent_cap": 0, "copay_pct": 0, "senior_copay_pct": 0, "start_date": "2025-08-01"}
+  ],
+  "members": [
+    {"id": "M001", "name": "Priya Sharma", "phone": "+91 98450 11223", "preferred_language": "hinglish", "policy_id": "POL-HF-20194417", "area": "Whitefield", "pincode": "560066"},
+    {"id": "M002", "name": "Ramesh Verma", "phone": "+91 99001 55882", "preferred_language": "hi", "policy_id": "POL-IN-30028820", "area": "Jayanagar", "pincode": "560041"},
+    {"id": "M003", "name": "Kavya Rao", "phone": "+91 97411 30219", "preferred_language": "kn", "policy_id": "POL-HF-40013021", "area": "HSR Layout", "pincode": "560102"}
+  ],
+  "insured_persons": [
+    {"id": "IP-11", "member_id": "M001", "name": "Priya Sharma", "relation": "self", "age": 29},
+    {"id": "IP-12", "member_id": "M001", "name": "Sunita Sharma", "relation": "mother", "age": 56},
+    {"id": "IP-13", "member_id": "M001", "name": "Rajesh Sharma", "relation": "father", "age": 59},
+    {"id": "IP-21", "member_id": "M002", "name": "Ramesh Verma", "relation": "self", "age": 52},
+    {"id": "IP-22", "member_id": "M002", "name": "Shyam Lal Verma", "relation": "father", "age": 78},
+    {"id": "IP-31", "member_id": "M003", "name": "Kavya Rao", "relation": "self", "age": 34}
+  ],
+  "procedures": [
+    {"code": "TKR", "name_en": "Total knee replacement", "name_hi": "घुटना प्रत्यारोपण", "aliases": ["knee replacement", "knee surgery", "tkr", "ghutna badalna", "ghutna badalwana", "ghutne ka operation", "घुटना बदलना", "घुटने का ऑपरेशन", "ಮಂಡಿ ಬದಲಾವಣೆ"], "specialty": "orthopaedics", "cost_low": 250000, "cost_high": 350000, "stay_days": 4, "waiting": 24, "sub_limit": 200000},
+    {"code": "THR", "name_en": "Total hip replacement", "name_hi": "कूल्हा प्रत्यारोपण", "aliases": ["hip replacement", "kulha badalna", "कूल्हा बदलना"], "specialty": "orthopaedics", "cost_low": 280000, "cost_high": 400000, "stay_days": 5, "waiting": 24, "sub_limit": 200000},
+    {"code": "CAT", "name_en": "Cataract surgery", "name_hi": "मोतियाबिंद ऑपरेशन", "aliases": ["cataract", "motiyabind", "moti bind", "aankh ka operation", "मोतियाबिंद", "आँख का ऑपरेशन", "lens replacement"], "specialty": "ophthalmology", "cost_low": 35000, "cost_high": 70000, "stay_days": 1, "waiting": 24, "sub_limit": 40000},
+    {"code": "HER", "name_en": "Hernia repair", "name_hi": "हर्निया ऑपरेशन", "aliases": ["hernia", "harniya", "हर्निया"], "specialty": "general surgery", "cost_low": 60000, "cost_high": 120000, "stay_days": 2, "waiting": 24, "sub_limit": 0},
+    {"code": "APP", "name_en": "Appendix removal", "name_hi": "अपेंडिक्स ऑपरेशन", "aliases": ["appendix", "appendectomy", "appendicitis", "अपेंडिक्स"], "specialty": "general surgery", "cost_low": 70000, "cost_high": 130000, "stay_days": 2, "waiting": 0, "sub_limit": 0},
+    {"code": "GBL", "name_en": "Gallbladder removal", "name_hi": "पित्ताशय की पथरी का ऑपरेशन", "aliases": ["gallbladder", "gall bladder stone", "cholecystectomy", "pitt ki pathri", "pittashay", "पित्त की पथरी"], "specialty": "general surgery", "cost_low": 80000, "cost_high": 150000, "stay_days": 2, "waiting": 24, "sub_limit": 0},
+    {"code": "KST", "name_en": "Kidney stone removal", "name_hi": "गुर्दे की पथरी का ऑपरेशन", "aliases": ["kidney stone", "pathri", "gurde ki pathri", "stone", "गुर्दे की पथरी", "पथरी"], "specialty": "urology", "cost_low": 60000, "cost_high": 140000, "stay_days": 2, "waiting": 24, "sub_limit": 0},
+    {"code": "ANG", "name_en": "Angioplasty", "name_hi": "एंजियोप्लास्टी", "aliases": ["angioplasty", "stent", "stent dalna", "heart stent", "स्टेंट", "एंजियोप्लास्टी"], "specialty": "cardiology", "cost_low": 200000, "cost_high": 350000, "stay_days": 3, "waiting": 0, "sub_limit": 0},
+    {"code": "CAB", "name_en": "Heart bypass surgery", "name_hi": "बाईपास सर्जरी", "aliases": ["bypass", "cabg", "heart bypass", "dil ka operation", "दिल का ऑपरेशन", "बाईपास"], "specialty": "cardiology", "cost_low": 350000, "cost_high": 550000, "stay_days": 7, "waiting": 0, "sub_limit": 0},
+    {"code": "DEL", "name_en": "Normal delivery", "name_hi": "सामान्य प्रसव", "aliases": ["delivery", "normal delivery", "baby", "prasav", "pregnancy", "प्रसव", "डिलीवरी"], "specialty": "obstetrics", "cost_low": 40000, "cost_high": 80000, "stay_days": 2, "waiting": 9, "sub_limit": 50000},
+    {"code": "CSE", "name_en": "Caesarean delivery", "name_hi": "सिजेरियन डिलीवरी", "aliases": ["c-section", "caesarean", "cesarean", "operation se delivery", "सिजेरियन"], "specialty": "obstetrics", "cost_low": 70000, "cost_high": 140000, "stay_days": 4, "waiting": 9, "sub_limit": 60000},
+    {"code": "HYS", "name_en": "Hysterectomy", "name_hi": "गर्भाशय निकालने का ऑपरेशन", "aliases": ["hysterectomy", "uterus removal", "bachchedani", "bachedani ka operation", "बच्चेदानी"], "specialty": "gynaecology", "cost_low": 90000, "cost_high": 180000, "stay_days": 3, "waiting": 24, "sub_limit": 0},
+    {"code": "PIL", "name_en": "Piles surgery", "name_hi": "बवासीर का ऑपरेशन", "aliases": ["piles", "haemorrhoids", "hemorrhoids", "bawasir", "fissure", "बवासीर"], "specialty": "general surgery", "cost_low": 40000, "cost_high": 90000, "stay_days": 1, "waiting": 24, "sub_limit": 0},
+    {"code": "FRX", "name_en": "Fracture surgery", "name_hi": "हड्डी टूटने का ऑपरेशन", "aliases": ["fracture", "haddi tootna", "haddi toot gayi", "fall", "gir gayi", "हड्डी टूट", "plate dalna"], "specialty": "orthopaedics", "cost_low": 80000, "cost_high": 200000, "stay_days": 3, "waiting": 0, "sub_limit": 0},
+    {"code": "ACL", "name_en": "Knee arthroscopy (ACL repair)", "name_hi": "घुटने की दूरबीन सर्जरी", "aliases": ["acl", "ligament", "arthroscopy", "ligament tear", "लिगामेंट"], "specialty": "orthopaedics", "cost_low": 120000, "cost_high": 220000, "stay_days": 2, "waiting": 24, "sub_limit": 0},
+    {"code": "SPN", "name_en": "Spine surgery", "name_hi": "रीढ़ की हड्डी का ऑपरेशन", "aliases": ["spine", "slip disc", "back surgery", "kamar ka operation", "रीढ़", "कमर का ऑपरेशन"], "specialty": "orthopaedics", "cost_low": 200000, "cost_high": 450000, "stay_days": 5, "waiting": 24, "sub_limit": 0},
+    {"code": "DLY", "name_en": "Dialysis", "name_hi": "डायलिसिस", "aliases": ["dialysis", "डायलिसिस"], "specialty": "nephrology", "cost_low": 2500, "cost_high": 4000, "stay_days": 0, "waiting": 0, "sub_limit": 0},
+    {"code": "CHM", "name_en": "Chemotherapy", "name_hi": "कीमोथेरेपी", "aliases": ["chemo", "chemotherapy", "cancer treatment", "कीमो"], "specialty": "oncology", "cost_low": 30000, "cost_high": 80000, "stay_days": 1, "waiting": 0, "sub_limit": 0},
+    {"code": "DNG", "name_en": "Dengue hospitalisation", "name_hi": "डेंगू में भर्ती", "aliases": ["dengue", "fever admission", "bukhar", "डेंगू"], "specialty": "general medicine", "cost_low": 30000, "cost_high": 90000, "stay_days": 4, "waiting": 0, "sub_limit": 0},
+    {"code": "TON", "name_en": "Tonsil removal", "name_hi": "टॉन्सिल का ऑपरेशन", "aliases": ["tonsils", "tonsillectomy", "टॉन्सिल"], "specialty": "ent", "cost_low": 40000, "cost_high": 80000, "stay_days": 1, "waiting": 24, "sub_limit": 0},
+    {"code": "SIN", "name_en": "Sinus surgery", "name_hi": "साइनस का ऑपरेशन", "aliases": ["sinus", "nose surgery", "naak ka operation", "साइनस"], "specialty": "ent", "cost_low": 60000, "cost_high": 120000, "stay_days": 1, "waiting": 24, "sub_limit": 0},
+    {"code": "BAR", "name_en": "Weight-loss (bariatric) surgery", "name_hi": "वज़न घटाने की सर्जरी", "aliases": ["bariatric", "weight loss surgery", "motapa", "मोटापा"], "specialty": "general surgery", "cost_low": 250000, "cost_high": 450000, "stay_days": 3, "waiting": 36, "sub_limit": 0},
+    {"code": "COS", "name_en": "Cosmetic surgery", "name_hi": "कॉस्मेटिक सर्जरी", "aliases": ["cosmetic", "plastic surgery", "nose job", "liposuction"], "specialty": "plastic surgery", "cost_low": 80000, "cost_high": 300000, "stay_days": 1, "covered": false, "note": "Excluded: cosmetic treatment unless needed after an accident or burns"},
+    {"code": "LAS", "name_en": "LASIK eye surgery", "name_hi": "लेसिक", "aliases": ["lasik", "chashma hatana", "specs removal", "चश्मा हटाना"], "specialty": "ophthalmology", "cost_low": 50000, "cost_high": 100000, "stay_days": 0, "covered": false, "note": "Excluded: correction of eyesight below 7.5 dioptres"},
+    {"code": "IVF", "name_en": "IVF / infertility treatment", "name_hi": "आईवीएफ", "aliases": ["ivf", "infertility", "test tube baby", "आईवीएफ"], "specialty": "obstetrics", "cost_low": 150000, "cost_high": 300000, "stay_days": 0, "covered": false, "note": "Excluded: infertility and assisted reproduction"}
+  ],
+  "areas": {
+    "Whitefield": {"pincode": "560066", "lat": 12.9698, "lng": 77.7500},
+    "Koramangala": {"pincode": "560034", "lat": 12.9352, "lng": 77.6245},
+    "Jayanagar": {"pincode": "560041", "lat": 12.9250, "lng": 77.5938},
+    "HSR Layout": {"pincode": "560102", "lat": 12.9116, "lng": 77.6474}
+  },
+  "hospitals": [
+    {"id": "H01", "name": "Sahyadri Ortho & Multispeciality, Whitefield", "area": "Whitefield", "pincode": "560066", "address": "ITPL Main Road, Whitefield", "lat": 12.9810, "lng": 77.7280, "specialties": ["orthopaedics", "general surgery", "cardiology", "general medicine"], "network": true, "cashless": true, "tier": 2},
+    {"id": "H02", "name": "Brookfield Bone & Joint Centre", "area": "Whitefield", "pincode": "560037", "address": "Brookefield Main Road", "lat": 12.9660, "lng": 77.7180, "specialties": ["orthopaedics"], "network": true, "cashless": true, "tier": 2},
+    {"id": "H03", "name": "Varthur Lake Care Hospital", "area": "Whitefield", "pincode": "560087", "address": "Varthur Road", "lat": 12.9400, "lng": 77.7420, "specialties": ["general medicine", "obstetrics", "general surgery"], "network": true, "cashless": false, "tier": 3},
+    {"id": "H04", "name": "Kadugodi Premier Hospital", "area": "Whitefield", "pincode": "560067", "address": "Kadugodi Main Road", "lat": 12.9980, "lng": 77.7590, "specialties": ["orthopaedics", "cardiology", "oncology", "nephrology"], "network": false, "cashless": false, "tier": 1},
+    {"id": "H05", "name": "Koramangala City Hospital", "area": "Koramangala", "pincode": "560034", "address": "80 Feet Road, 4th Block", "lat": 12.9340, "lng": 77.6270, "specialties": ["general medicine", "general surgery", "ent", "orthopaedics"], "network": true, "cashless": true, "tier": 2},
+    {"id": "H06", "name": "Ejipura Heart Institute", "area": "Koramangala", "pincode": "560047", "address": "Inner Ring Road, Ejipura", "lat": 12.9440, "lng": 77.6300, "specialties": ["cardiology"], "network": true, "cashless": true, "tier": 1},
+    {"id": "H07", "name": "Sony World Eye Hospital", "area": "Koramangala", "pincode": "560095", "address": "Sony World Junction", "lat": 12.9370, "lng": 77.6260, "specialties": ["ophthalmology"], "network": true, "cashless": true, "tier": 3},
+    {"id": "H08", "name": "Forum Women & Child Hospital", "area": "Koramangala", "pincode": "560029", "address": "Hosur Road", "lat": 12.9300, "lng": 77.6180, "specialties": ["obstetrics", "gynaecology"], "network": true, "cashless": true, "tier": 2},
+    {"id": "H09", "name": "Jayanagar Nethralaya", "area": "Jayanagar", "pincode": "560041", "address": "11th Main, 4th Block", "lat": 12.9270, "lng": 77.5830, "specialties": ["ophthalmology"], "network": true, "cashless": true, "tier": 3},
+    {"id": "H10", "name": "Lalbagh Multispeciality Hospital", "area": "Jayanagar", "pincode": "560011", "address": "South End Circle", "lat": 12.9380, "lng": 77.5800, "specialties": ["general medicine", "general surgery", "orthopaedics", "urology", "cardiology", "oncology"], "network": true, "cashless": true, "tier": 1},
+    {"id": "H11", "name": "Banashankari Kidney & Uro Centre", "area": "Jayanagar", "pincode": "560070", "address": "Kanakapura Road", "lat": 12.9150, "lng": 77.5730, "specialties": ["urology", "nephrology"], "network": true, "cashless": false, "tier": 3},
+    {"id": "H12", "name": "Jayanagar General Hospital", "area": "Jayanagar", "pincode": "560069", "address": "9th Block", "lat": 12.9210, "lng": 77.5900, "specialties": ["general medicine", "general surgery", "ent"], "network": false, "cashless": false, "tier": 3},
+    {"id": "H13", "name": "HSR Spine & Joint Hospital", "area": "HSR Layout", "pincode": "560102", "address": "27th Main, Sector 1", "lat": 12.9120, "lng": 77.6440, "specialties": ["orthopaedics"], "network": true, "cashless": true, "tier": 2},
+    {"id": "H14", "name": "Agara Lakeside Hospital", "area": "HSR Layout", "pincode": "560102", "address": "Agara Main Road", "lat": 12.9230, "lng": 77.6500, "specialties": ["general medicine", "general surgery", "obstetrics", "gynaecology", "ent"], "network": true, "cashless": true, "tier": 2},
+    {"id": "H15", "name": "Bellandur Cancer & Care", "area": "HSR Layout", "pincode": "560103", "address": "Outer Ring Road, Bellandur", "lat": 12.9260, "lng": 77.6760, "specialties": ["oncology", "nephrology", "general medicine"], "network": true, "cashless": true, "tier": 1}
+  ],
+  "claims": [
+    {"id": "CLM-1042", "member_id": "M002", "insured_person_id": "IP-22", "hospital_id": "H09", "procedure_code": "CAT", "type": "reimbursement", "status": "QUERY", "pending_docs": ["discharge_summary"], "amount": 38500, "admission_date": "2026-11-03", "days_ago": 9},
+    {"id": "CLM-1077", "member_id": "M003", "insured_person_id": "IP-31", "hospital_id": "H14", "procedure_code": "DNG", "type": "reimbursement", "status": "QUERY", "pending_docs": ["original_bills", "cancelled_cheque"], "amount": 52000, "admission_date": "2026-10-28", "days_ago": 15},
+    {"id": "CLM-0988", "member_id": "M001", "insured_person_id": "IP-11", "hospital_id": "H05", "procedure_code": "APP", "type": "cashless", "status": "SETTLED", "pending_docs": [], "amount": 96000, "admission_date": "2025-06-10", "days_ago": 520},
+    {"id": "CLM-1013", "member_id": "M002", "insured_person_id": "IP-21", "hospital_id": "H10", "procedure_code": "DNG", "type": "cashless", "status": "APPROVED", "pending_docs": [], "amount": 41000, "admission_date": "2026-09-14", "days_ago": 60}
+  ],
+  "memories": [
+    {"member_id": "M002", "key": "last_call_summary", "value": "15 नवंबर: रमेश जी ने पापा के cataract claim CLM-1042 का status पूछा था। Claim submitted था।"},
+    {"member_id": "M003", "key": "last_call_summary", "value": "12 Nov: Kavya asked why reimbursement claim CLM-1077 was slow. Told her the TPA was reviewing it."}
+  ]
+}
