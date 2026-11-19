@@ -23,11 +23,11 @@ PROMPT = (
 
 
 async def extract(path: str, mime: str) -> dict:
-    if not config.llm_ready():
+    if not (config.VISION_API_KEY and config.VISION_MODEL):
         return {"doc_type": _guess_from_name(path), "fields": {"note": "vision model not configured; guessed from file name"}}
     from openai import AsyncOpenAI
 
-    client = AsyncOpenAI(api_key=config.LLM_API_KEY, base_url=config.LLM_BASE_URL)
+    client = AsyncOpenAI(api_key=config.VISION_API_KEY, base_url=config.VISION_BASE_URL)
     data = Path(path).read_bytes()
     if mime == "application/pdf":
         from pypdf import PdfReader

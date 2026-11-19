@@ -11,7 +11,7 @@ import time
 import uuid
 from typing import AsyncIterator
 
-from openai import AsyncOpenAI
+from openai import APIError, AsyncOpenAI
 
 from . import config, db, memory
 from .events import hub
@@ -56,6 +56,13 @@ FALLBACK = {
     "hinglish": "Sorry, yeh abhi mujhse nahi ho pa raha. Kya main aapko claims desk ke kisi executive se connect kar doon?",
     "en": "Sorry, I can't complete that right now. Shall I connect you to someone at the claims desk?",
     "kn": "ಕ್ಷಮಿಸಿ, ಇದು ಈಗ ಆಗುತ್ತಿಲ್ಲ. ನಿಮ್ಮನ್ನು claims desk ಗೆ ಸಂಪರ್ಕಿಸಲೇ?",
+}
+# Said when the model provider errors or rate-limits, so the caller never hears silence.
+BUSY = {
+    "hi": "माफ़ कीजिए, एक पल के लिए दिक्कत आ गई। क्या आप फिर से बोल सकते हैं?",
+    "hinglish": "Sorry, ek second ke liye dikkat aa gayi. Kya aap phir se bol sakte hain?",
+    "en": "Sorry, I had a hiccup there. Could you say that again?",
+    "kn": "ಕ್ಷಮಿಸಿ, ಒಂದು ಕ್ಷಣ ತೊಂದರೆ ಆಯಿತು. ಮತ್ತೊಮ್ಮೆ ಹೇಳುತ್ತೀರಾ?",
 }
 
 _client: AsyncOpenAI | None = None
@@ -138,9 +145,16 @@ async def turn(session: dict, incoming: list[dict]) -> AsyncIterator[str]:
             spoken.append(fb)
             yield fb
             break
-        stream = await client().chat.completions.create(
-            model=config.LLM_MODEL, messages=messages, tools=registry.schemas(), stream=True,
-            temperature=0.3, max_tokens=300)
+        try:
+            stream = await client().chat.completions.create(
+                model=config.LLM_MODEL, messages=messages, tools=registry.schemas(), stream=True,
+                temperature=0.3, max_tokens=300)
+        except APIError as e:
+            log.warning("model call failed: %s", e)
+            busy = BUSY.get(lang, BUSY["hinglish"])
+            spoken.append(busy)
+            yield busy
+            break
         calls: dict[int, dict] = {}
         text_this_round = ""
         first = True

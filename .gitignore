@@ -10,3 +10,4 @@ web/.next/
 service-account*.json
 .DS_Store
 *.tsbuildinfo
+.env.local

@@ -1,7 +1,7 @@
 """Run the PRD's utterance matrix through the real model in text mode and log pass/fail.
 
 Each scenario is a short scripted conversation; the check looks at which tools fired and their status.
-Usage: python scripts/matrix.py [--base http://localhost:8000] [--runs 3]
+Usage: python scripts/matrix.py [--base http://localhost:8000] [--runs 3] [--pause 1.5]
 Rows 5, 8, 9 and the voice-only checks (interruption, latency, audio) still need a spoken run."""
 from __future__ import annotations
 
@@ -34,7 +34,7 @@ def post(base: str, path: str, body: dict) -> dict:
         return json.loads(r.read())
 
 
-def run_one(base: str, row, member, turns, tool, check) -> tuple[bool, str, float]:
+def run_one(base: str, row, member, turns, tool, check, pause: float = 0.0) -> tuple[bool, str, float]:
     import re
     s = post(base, "/api/session/start", {"member_id": member, "mode": "text"})
     sid = s["sessionId"]
@@ -44,6 +44,7 @@ def run_one(base: str, row, member, turns, tool, check) -> tuple[bool, str, floa
             t0 = time.time()
             reply = post(base, "/api/dev/chat", {"sessionId": sid, "text": t})["reply"]
             t_last = time.time() - t0
+            time.sleep(pause)
         events = json.loads(urllib.request.urlopen(f"{base}/api/events/{sid}").read())
     finally:
         post(base, "/api/session/stop", {"sessionId": sid})
@@ -67,15 +68,16 @@ def main() -> int:
     ap.add_argument("--base", default="http://localhost:8000")
     ap.add_argument("--runs", type=int, default=1)
     ap.add_argument("--rows", default="")
+    ap.add_argument("--pause", type=float, default=1.5, help="seconds between turns (free-tier rate limits)")
     a = ap.parse_args()
     rows = {int(x) for x in a.rows.split(",") if x}
     total = passed = 0
     for run in range(a.runs):
-        post(a.base, "/admin/reset", {})
         for row, member, turns, tool, check in SCENARIOS:
             if rows and row not in rows:
                 continue
-            ok, detail, secs = run_one(a.base, row, member, turns, tool, check)
+            post(a.base, "/admin/reset", {})  # each scenario starts from the seed, like the demo
+            ok, detail, secs = run_one(a.base, row, member, turns, tool, check, a.pause)
             total += 1
             passed += ok
             print(f"run {run + 1} row {row:>2} {'PASS' if ok else 'FAIL'} ({secs:.1f}s last turn) {detail}")

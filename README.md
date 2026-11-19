@@ -38,8 +38,9 @@ the agent replies that the key is missing; everything else (tracker, admin, call
 | `AGORA_APP_ID`, `AGORA_APP_CERT` | Agora Console project (enable Conversational AI) | voice |
 | `AGORA_CUSTOMER_ID`, `AGORA_CUSTOMER_SECRET` | Agora Console → RESTful API | starting/stopping the agent |
 | `SARVAM_API_KEY` | Sarvam dashboard | Hindi/Hinglish ASR |
-| `MURF_API_KEY`, `MURF_VOICE_ID` | Murf API dashboard; pick a Falcon voice with hi-IN | TTS |
-| `LLM_API_KEY`, `LLM_MODEL`, `LLM_BASE_URL` | any OpenAI-compatible endpoint with tool calling | the agent's reasoning |
+| `MURF_API_KEY`, `MURF_VOICE_ID` | Murf API dashboard; e.g. `hi-IN-poonam` (Hindi, English and Kannada) | TTS |
+| `LLM_API_KEY`, `LLM_MODEL`, `LLM_BASE_URL` | any OpenAI-compatible endpoint with tool calling; the Sarvam key works (`https://api.sarvam.ai/v1`, `sarvam-105b-conversations`) | the agent's reasoning |
+| `VISION_MODEL`, `VISION_API_KEY`, `VISION_BASE_URL` | optional OpenAI-compatible vision model for document photos; blank = guess type from file name | MVP+ document check |
 | `LLM_SHARED_SECRET` | make one up | Agora → server auth (Bearer) |
 | `PUBLIC_BASE_URL` | your tunnel or deploy URL (HTTPS) | Agora must reach `/chat/completions` |
 | `TELEGRAM_BOT_TOKEN`, `TELEGRAM_DEMO_CHAT_ID`, `TELEGRAM_DESK_CHAT_ID` | @BotFather; chat ids of the demo phone and desk group | summaries, reminders, escalations |
@@ -90,9 +91,13 @@ Every Telegram message is also mirrored to the on-screen demo phone, which is th
   `data/sample_policy_wording.pdf` and it is used instead.
 - **Not built:** the "block any ₹ amount not in tool results" post-check from the risk table, SIP dial-in, caregiver mode.
 
-## Not yet verified against live services
+## Verified against live services
 
-No keys were available while building, so these paths are written to the docs but have not run for real:
-the Agora join call and token, Sarvam and Murf params, Telegram delivery, Google Calendar, and the vision model.
-Gate 0 (a spoken Hinglish question triggers a tool and gets a spoken answer) is the first thing to run with keys.
+- Agora: ConvoAI join with Sarvam ASR + Murf TTS params is accepted and the agent reaches RUNNING; leave works.
+- `/chat/completions` through a Cloudflare tunnel with the shared secret (401 without it), streaming SSE.
+- Sarvam `sarvam-105b-conversations` as the LLM: `make matrix` 22/22 (11 scenarios x 2), replies in ~0.3-1.5 s.
+- Murf Falcon voices; Google Calendar event creation.
+
+Not yet: the spoken round trip (Gate 0), Telegram delivery, and a vision model for document photos.
+Sarvam's free tier rate-limits bursts; the agent says a short "please repeat" line instead of going silent.
 All data is invented. No real insurer, policy or patient data.
